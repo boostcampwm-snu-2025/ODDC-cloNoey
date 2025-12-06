@@ -1,0 +1,33 @@
+# Environment variables
+.env
+.env.local
+
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# IDE
+.cursor/
+.claude/
+.idea/
+*.swp
+*.swo
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Alembic
+alembic.ini
+server/database/alembic/versions/
+
+# DB
+*.sql
