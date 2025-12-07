@@ -18,7 +18,7 @@ class StudioResponse(BaseModel):
     default_price: Optional[int]
     youtube: Optional[str]
     bio: Optional[str]
-    role: Optional[str]  # User.role.value if user exists
+    role: str
 
     @staticmethod
     def from_studio(studio: Studio) -> "StudioResponse":
@@ -37,5 +37,5 @@ class StudioResponse(BaseModel):
             default_price=studio.default_price,
             youtube=studio.youtube,
             bio=studio.bio,
-            role=studio.user.role.value if studio.user else None
+            role="STUDIO"
         )

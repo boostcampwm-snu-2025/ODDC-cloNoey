@@ -16,7 +16,6 @@ import enum
 class UserRole(enum.Enum):
     USER = "user"
     DANCER = "dancer"
-    STUDIO = "studio"
 
 # 유저 정보
 class User(Base):
