@@ -16,6 +16,9 @@ class StudioResponse(BaseModel):
     reservation_form: Optional[str]
     default_duration: Optional[str]  # Return as HH:MM:SS string
     default_price: Optional[int]
+    youtube: Optional[str]
+    bio: Optional[str]
+    role: Optional[str]  # User.role.value if user exists
 
     @staticmethod
     def from_studio(studio: Studio) -> "StudioResponse":
@@ -31,5 +34,8 @@ class StudioResponse(BaseModel):
             reservation_form=studio.reservation_form,
             # Convert time object to string for JSON serialization
             default_duration=studio.default_duration.strftime("%H:%M:%S") if studio.default_duration else None,
-            default_price=studio.default_price
+            default_price=studio.default_price,
+            youtube=studio.youtube,
+            bio=studio.bio,
+            role=studio.user.role.value if studio.user else None
         )

@@ -51,6 +51,18 @@ class StudioCreateRequest(BaseModel):
         examples=[30000, 40000, 50000],
         ge=0
     )
+    youtube: Optional[str] = Field(
+        default=None,
+        description="스튜디오 유튜브 채널",
+        examples=["https://youtube.com/@1milliondance", "https://www.youtube.com/c/JUSTJERK"],
+        max_length=255
+    )
+    bio: Optional[str] = Field(
+        default=None,
+        description="스튜디오 소개글",
+        examples=["강남 최고의 댄스 스튜디오", "K-POP 안무 전문 스튜디오"],
+        max_length=500
+    )
     user_id: Optional[str] = Field(
         default=None,
         description="연결할 사용자 ID (선택사항)",
@@ -129,6 +141,18 @@ class StudioEditRequest(BaseModel):
         description="기본 수업료 (원 단위)",
         examples=[30000, 40000],
         ge=0
+    )
+    youtube: Optional[str] = Field(
+        default=None,
+        description="스튜디오 유튜브 채널",
+        examples=["https://youtube.com/@1milliondance"],
+        max_length=255
+    )
+    bio: Optional[str] = Field(
+        default=None,
+        description="스튜디오 소개글",
+        examples=["강남 최고의 댄스 스튜디오"],
+        max_length=500
     )
     is_verified: Optional[bool] = Field(
         default=None,

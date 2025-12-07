@@ -1,5 +1,5 @@
 from fastapi import Depends, HTTPException
-from typing import Annotated
+from typing import Annotated, List
 
 from server.features.studio.models import Studio
 from server.features.studio.dto.requests import (
@@ -28,6 +28,8 @@ class StudioService:
             reservation_form=studio_request.reservation_form,
             default_duration=studio_request.default_duration,
             default_price=studio_request.default_price,
+            youtube=studio_request.youtube,
+            bio=studio_request.bio,
             user_id=studio_request.user_id
         )
         return StudioResponse.from_studio(studio)
@@ -53,6 +55,8 @@ class StudioService:
             reservation_form=studio_request.reservation_form,
             default_duration=studio_request.default_duration,
             default_price=studio_request.default_price,
+            youtube=studio_request.youtube,
+            bio=studio_request.bio,
             is_verified=studio_request.is_verified
         )
         return StudioResponse.from_studio(updated_studio)
@@ -83,3 +87,7 @@ class StudioService:
     async def get_studio_by_instagram(self, instagram: str) -> Studio | None:
         """인스타그램 아이디로 조회"""
         return await self.studio_db_store.get_studio_by_instagram(instagram)
+
+    async def get_all_studios(self) -> List[Studio]:
+        """전체 스튜디오 목록 조회"""
+        return await self.studio_db_store.get_all_studios()

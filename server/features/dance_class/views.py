@@ -8,7 +8,7 @@ from server.features.dance_class.dto.requests import (
     ClassEditRequest,
     ClassDeleteRequest
 )
-from server.features.dance_class.dto.responses import ClassResponse
+from server.features.dance_class.dto.responses import ClassResponse, ClassDetailResponse
 
 class_router = APIRouter()
 
@@ -44,25 +44,25 @@ async def get_class_by_id(
 
 @class_router.get("/studio/{studio_id}", status_code=HTTP_200_OK,
                   summary="스튜디오별 수업 목록 조회",
-                  description="특정 스튜디오의 모든 수업을 조회합니다.")
+                  description="특정 스튜디오의 모든 수업을 조회합니다 (댄서 상세 정보 포함).")
 async def get_classes_by_studio(
     class_service: Annotated[ClassService, Depends()],
     studio_id: str
-) -> List[ClassResponse]:
+) -> List[ClassDetailResponse]:
     """스튜디오별 수업 목록 조회"""
     classes = await class_service.get_classes_by_studio(studio_id)
-    return [ClassResponse.from_class(c) for c in classes]
+    return [ClassDetailResponse.from_class(c) for c in classes]
 
 @class_router.get("/dancer/{dancer_id}", status_code=HTTP_200_OK,
                   summary="댄서별 수업 목록 조회",
-                  description="특정 댄서가 진행하는 모든 수업을 조회합니다.")
+                  description="특정 댄서가 진행하는 모든 수업을 조회합니다 (스튜디오 정보 포함).")
 async def get_classes_by_dancer(
     class_service: Annotated[ClassService, Depends()],
     dancer_id: str
-) -> List[ClassResponse]:
+) -> List[ClassDetailResponse]:
     """댄서별 수업 목록 조회"""
     classes = await class_service.get_classes_by_dancer(dancer_id)
-    return [ClassResponse.from_class(c) for c in classes]
+    return [ClassDetailResponse.from_class(c) for c in classes]
 
 # ======================== UPDATE ========================
 

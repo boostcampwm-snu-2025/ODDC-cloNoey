@@ -37,6 +37,10 @@ class Studio(Base):
     default_duration: Mapped[Optional[time]] = mapped_column(Time, nullable=True)
     # 스튜디오 기본 가격
     default_price: Mapped[Optional[int]] = mapped_column(BigInteger, nullable=True)
+    # 스튜디오 유튜브 채널
+    youtube: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    # 스튜디오 소개글
+    bio: Mapped[Optional[str]] = mapped_column(String(500), nullable=True)
 
     # User와의 관계
     user: Mapped[Optional["User"]] = relationship("User", back_populates="studio", lazy="selectin")

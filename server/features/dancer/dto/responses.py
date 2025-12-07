@@ -10,6 +10,7 @@ class DancerResponse(BaseModel):
     instagram: Optional[str]
     is_verified: bool
     genre: Optional[str]
+    role: Optional[str]  # User.role.value if user exists
 
     @staticmethod
     def from_dancer(dancer: Dancer) -> "DancerResponse":
@@ -19,7 +20,8 @@ class DancerResponse(BaseModel):
             names=dancer.names,
             instagram=dancer.instagram,
             is_verified=dancer.is_verified,
-            genre=dancer.genre.value if dancer.genre else None
+            genre=dancer.genre.value if dancer.genre else None,
+            role=dancer.user.role.value if dancer.user else None
         )
 
 
