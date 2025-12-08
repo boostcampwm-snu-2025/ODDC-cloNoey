@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer base {
+  /* Font 설정 */
+  body {
+    @apply antialiased;
+  }
+
+  /* 추후 폰트 크기, 두께, color chip 등 전역 스타일 추가 예정 */
+}

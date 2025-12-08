@@ -1,0 +1,16 @@
+# Build outputs
+dist
+dist-ssr
+*.local
+
+# Dependencies
+node_modules
+
+# Logs
+*.log
+
+# Lock files
+package-lock.json
+
+# Git
+.git
