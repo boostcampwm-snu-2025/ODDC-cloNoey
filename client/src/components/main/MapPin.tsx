@@ -39,7 +39,7 @@ export default function MapPin({ studio, onClick, className }: MapPinProps) {
       {/* 핀 이미지 */}
       <div className="relative">
         {/* 핀 아이콘 - 추후 실제 핀 이미지로 교체 */}
-        <div className="w-6 h-6 bg-red-500 rounded-full border-2 border-white shadow-md"></div>
+        <div className="w-6 h-6 ">📍</div>
 
         {/* 스튜디오 이름 카드 */}
         <div

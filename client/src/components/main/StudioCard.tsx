@@ -39,8 +39,8 @@ export default function StudioCard({
         </div>
       )}
 
-      {/* 스튜디오 이름 - 가운데(아래쪽), 왼쪽 정렬, 20px */}
-      <h3 className="font-semibold text-[20px] text-left truncate">
+      {/* 스튜디오 이름 - 가운데(아래쪽), 왼쪽 정렬, 18px */}
+      <h3 className="font-semibold text-[18px] text-left tracking-[-0.05em] whitespace-nowrap">
         {studio.name}
       </h3>
     </div>
