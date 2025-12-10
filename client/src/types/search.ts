@@ -15,6 +15,7 @@ export interface SearchResultItem {
   id: string; // dancer_id 또는 studio_id
   name: string;
   type: SearchResultType;
+  instagram: string;
 }
 
 /**

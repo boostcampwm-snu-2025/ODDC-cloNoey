@@ -64,8 +64,8 @@ export default function SearchResults({
       {/* 스튜디오 결과 */}
       {studios.length > 0 && (
         <div>
-          <h3 className="text-[14px] font-semibold mb-2 px-4 text-gray-600">
-            스튜디오 ({studios.length})
+          <h3 className="text-[14px] font-semibold mb-2 mx-2 p-2 text-gray-600 border-b border-gray-300">
+            Studio ({studios.length})
           </h3>
           <div>
             {studios.map((studio) => (
@@ -82,8 +82,8 @@ export default function SearchResults({
       {/* 댄서 결과 */}
       {dancers.length > 0 && (
         <div>
-          <h3 className="text-[14px] font-semibold mb-2 px-4 text-gray-600">
-            댄서 ({dancers.length}
+          <h3 className="text-[14px] font-semibold mb-2 mx-2 p-2 text-gray-600 border-b border-gray-300">
+            Dancer ({dancers.length}
             {hasMoreDancers ? "+" : ""})
           </h3>
           <div>

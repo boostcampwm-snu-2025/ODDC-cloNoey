@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import type { SearchResultItem } from "@/types";
+import arrowRightIcon from "@/assets/icons/arrow_right.svg";
 
 interface SearchResultCardProps {
   item: SearchResultItem;
@@ -23,18 +24,16 @@ export default function SearchResultCard({
     onClick?.(item);
 
     // 상세 페이지로 이동
-    const path = item.type === "dancer" ? `/dancer/${item.id}` : `/studio/${item.id}`;
+    const path =
+      item.type === "dancer" ? `/dancer/${item.id}` : `/studio/${item.id}`;
     navigate(path);
   };
-
-  const roleLabel = item.type === "dancer" ? "Dancer" : "Studio";
 
   return (
     <div
       onClick={handleClick}
       className={cn(
-        "w-full h-[60px] px-4",
-        "border-b border-gray-200",
+        "w-full h-[40px] px-4",
         "flex items-center justify-between",
         "cursor-pointer hover:bg-gray-50 transition-colors",
         className
@@ -42,10 +41,16 @@ export default function SearchResultCard({
     >
       {/* 좌측: 이름 + Role */}
       <div className="flex flex-col gap-1">
-        <h3 className="text-[14px] font-semibold text-gray-900">
-          {item.name}
+        <h3 className="flex text-[14px] font-semibold text-gray-900 items-center">
+          <span>{item.name}</span>
+          {/* 구분선 (연한 회색) */}
+          <span className="mx-1.5 text-gray-300">|</span>
+
+          {/* 타입 (회색, 작은 글씨, 기울임체) */}
+          <span className="text-gray-400 text-[10px] italic">
+            @{item.instagram}
+          </span>
         </h3>
-        <p className="text-[12px] text-gray-500">{roleLabel}</p>
       </div>
 
       {/* 우측: > 버튼 */}
@@ -53,7 +58,11 @@ export default function SearchResultCard({
         className="text-gray-400 text-[20px] font-light"
         aria-label={`${item.name} 상세보기`}
       >
-        &gt;
+        <img
+          src={arrowRightIcon}
+          alt="상세 페이지로"
+          className="w-[10px] h-[10px]"
+        />
       </button>
     </div>
   );

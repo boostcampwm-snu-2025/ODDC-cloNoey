@@ -30,6 +30,7 @@ const searchData = async (
       id: dancer.dancer_id,
       name: dancer.name,
       type: "dancer" as const,
+      instagram: dancer.instagram,
     }));
 
   // 페이지네이션 적용
@@ -59,6 +60,7 @@ const searchStudios = (searchQuery: string): SearchResultItem[] => {
       id: studio.studio_id,
       name: studio.name,
       type: "studio" as const,
+      instagram: studio.instagram,
     }));
 };
 
@@ -69,19 +71,14 @@ const searchStudios = (searchQuery: string): SearchResultItem[] => {
  */
 export function useSearchQuery(searchQuery: string) {
   // 댄서 무한 스크롤 쿼리
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    isLoading,
-  } = useInfiniteQuery({
-    queryKey: ["search", "dancers", searchQuery],
-    queryFn: ({ pageParam = 0 }) => searchData(searchQuery, pageParam),
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
-    initialPageParam: 0,
-    enabled: searchQuery.trim().length > 0, // 검색어가 있을 때만 활성화
-  });
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
+    useInfiniteQuery({
+      queryKey: ["search", "dancers", searchQuery],
+      queryFn: ({ pageParam = 0 }) => searchData(searchQuery, pageParam),
+      getNextPageParam: (lastPage) => lastPage.nextCursor,
+      initialPageParam: 0,
+      enabled: searchQuery.trim().length > 0, // 검색어가 있을 때만 활성화
+    });
 
   // 스튜디오 검색 (일회성)
   const studios = searchStudios(searchQuery);

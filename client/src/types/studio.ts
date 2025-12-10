@@ -14,7 +14,7 @@ export interface Studio {
   studio_id: string; // 스튜디오 고유 식별자
   user_id?: string | null; // 유저 식별자 (nullable)
   name: string; // 스튜디오 이름
-  instagram?: string | null; // 인스타그램
+  instagram: string; // 인스타그램
   location?: string | null; // 위치
   email?: string | null; // 이메일
   website?: string | null; // 웹사이트

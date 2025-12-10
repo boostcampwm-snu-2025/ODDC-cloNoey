@@ -62,7 +62,7 @@ export default function SearchPage() {
       </div>
 
       {/* 하단 스크롤 가능 컨텐츠 영역 */}
-      <div className="flex-1 overflow-y-auto px-8 py-6">
+      <div className="flex-1 overflow-y-auto px-8 py-2">
         {!hasSearchQuery ? (
           // 검색어 없을 때: 최근 검색어
           <RecentSearches onSearchItemClick={handleRecentSearchClick} />

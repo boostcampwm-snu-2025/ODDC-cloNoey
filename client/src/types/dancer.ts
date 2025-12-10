@@ -4,4 +4,5 @@
 export interface Dancer {
   dancer_id: string; // 댄서 고유 식별자
   name: string; // 댄서 이름
+  instagram: string; //댄서 인스타그램
 }
