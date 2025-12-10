@@ -17,17 +17,14 @@ export default function StudioCard({
   onClick,
   className,
 }: StudioCardProps) {
-  const handleClick = () => {
-    onClick?.(studio);
-  };
-
   return (
     <div
-      onClick={handleClick}
+      onClick={() => onClick?.(studio)}
       className={cn(
         "border border-gray-300 rounded-lg pl-4 pb-5 pr-2 pt-2 cursor-pointer",
         "hover:shadow-md transition-shadow",
         "flex flex-col",
+        "bg-white",
         className
       )}
     >

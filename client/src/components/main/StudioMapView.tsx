@@ -6,6 +6,7 @@ import mapImage from "@/assets/images/seoul_map.png";
 interface StudioMapViewProps {
   studios: Studio[];
   className?: string;
+  onPinClick?: (studio: Studio) => void;
 }
 
 /**
@@ -15,6 +16,7 @@ interface StudioMapViewProps {
 export default function StudioMapView({
   studios,
   className,
+  onPinClick,
 }: StudioMapViewProps) {
   return (
     <div
@@ -40,7 +42,7 @@ export default function StudioMapView({
       {studios
         .filter((studio) => studio.coordinates)
         .map((studio) => (
-          <MapPin key={studio.studio_id} studio={studio} />
+          <MapPin key={studio.studio_id} studio={studio} onClick={onPinClick} />
         ))}
     </div>
   );
