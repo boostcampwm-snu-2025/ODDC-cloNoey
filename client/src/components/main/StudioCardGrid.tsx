@@ -5,6 +5,7 @@ import StudioCard from "./StudioCard";
 interface StudioCardGridProps {
   studios: Studio[];
   className?: string;
+  onStudioClick?: (studio: Studio) => void;
 }
 
 /**
@@ -14,6 +15,7 @@ interface StudioCardGridProps {
 export default function StudioCardGrid({
   studios,
   className,
+  onStudioClick,
 }: StudioCardGridProps) {
   return (
     <div
@@ -24,7 +26,11 @@ export default function StudioCardGrid({
       )}
     >
       {studios.map((studio) => (
-        <StudioCard key={studio.studio_id} studio={studio} />
+        <StudioCard
+          key={studio.studio_id}
+          studio={studio}
+          onClick={onStudioClick}
+        />
       ))}
     </div>
   );
