@@ -1,10 +1,30 @@
 @import "tailwindcss";
 
 @layer base {
+  /* Color Variables */
+  :root {
+    --color-primary: #0C1A58;
+    --color-primary-hover: rgba(12, 26, 88, 0.9);
+    --color-primary-bg: #EEF3FF; /* 연한 파란색 배경 */
+    --color-lavender: #E6E6FA; /* 연한 보라색 */
+    --color-light-gray: #D9D9D9; /* 밝은 회색 */
+    --color-medium-gray: #9E9E9E; /* 중간 회색 */
+    --color-white: #ffffff;
+    --color-black-50: rgba(0, 0, 0, 0.5); /* 반투명 검정 */
+
+    /* Font Size Variables */
+    --text-xs: 8px;
+    --text-sm: 10px;
+    --text-md: 12px;
+    --text-base: 14px;
+    --text-lg: 16px;
+    --text-xl: 18px;
+    --text-2xl: 20px;
+    --text-3xl: 24px;
+  }
+
   /* Font 설정 */
   body {
     @apply antialiased;
   }
-
-  /* 추후 폰트 크기, 두께, color chip 등 전역 스타일 추가 예정 */
 }

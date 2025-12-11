@@ -129,7 +129,8 @@ export default function CalendarGrid({
         {WEEKDAYS.map((day) => (
           <div
             key={day}
-            className="text-center text-[12px] font-medium text-gray-600 py-2"
+            className="text-center font-medium text-gray-600 py-2"
+            style={{ fontSize: "var(--text-md)" }}
           >
             {day}
           </div>

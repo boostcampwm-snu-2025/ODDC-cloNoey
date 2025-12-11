@@ -28,27 +28,37 @@ export default function CalendarDay({
         "aspect-square flex flex-col items-center justify-center",
         "cursor-pointer transition-colors",
         "hover:bg-gray-50",
-        isSelected && "bg-[#EEF3FF]",
         !isCurrentMonth && "opacity-40",
         className
       )}
+      style={{
+        backgroundColor: isSelected ? "var(--color-primary-bg)" : undefined,
+      }}
     >
       {/* 날짜 숫자 */}
       <div
         className={cn(
-          "text-[14px] font-medium",
+          "font-medium",
           "flex items-center justify-center",
           "w-8 h-8 rounded-full",
-          isToday && "border-2 border-[#0C1A58]",
           isCurrentMonth ? "text-gray-900" : "text-gray-400"
         )}
+        style={{
+          fontSize: "var(--text-base)",
+          borderWidth: isToday ? "2px" : undefined,
+          borderStyle: isToday ? "solid" : undefined,
+          borderColor: isToday ? "var(--color-primary)" : undefined,
+        }}
       >
         {date.getDate()}
       </div>
 
       {/* 클래스 있을 때 점 표시 */}
       {hasClasses && (
-        <div className="w-1 h-1 rounded-full bg-[#0C1A58] mt-1" />
+        <div
+          className="w-1 h-1 rounded-full mt-1"
+          style={{ backgroundColor: "var(--color-primary)" }}
+        />
       )}
     </div>
   );

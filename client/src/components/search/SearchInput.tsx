@@ -42,9 +42,10 @@ export default function SearchInput({
       <div
         className={cn(
           "relative flex-1 h-[40px] rounded-[20px]",
-          "bg-[#E6E6FA] flex items-center",
+          "flex items-center",
           className
         )}
+        style={{ backgroundColor: "var(--color-lavender)" }}
       >
         {/* 입력 필드 */}
         <input
@@ -54,10 +55,13 @@ export default function SearchInput({
           placeholder={placeholder}
           className={cn(
             "w-full h-full px-4 pr-12",
-            "bg-transparent text-[14px] text-[#0C1A58]",
-            "placeholder:text-[#0C1A58] placeholder:text-[12px]",
+            "bg-transparent",
             "focus:outline-none rounded-[20px]"
           )}
+          style={{
+            fontSize: "var(--text-base)",
+            color: "var(--color-primary)",
+          }}
           aria-label="검색어 입력"
         />
 

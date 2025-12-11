@@ -112,10 +112,11 @@ export default function DisplayOptionsModal({
   return (
     <div
       className={cn(
-        "fixed inset-0 bg-black/50 z-50",
+        "fixed inset-0 z-50",
         "flex items-center justify-center p-4",
         className
       )}
+      style={{ backgroundColor: "var(--color-black-50)" }}
       onClick={onClose}
     >
       {/* 모달 콘텐츠 */}
@@ -129,12 +130,16 @@ export default function DisplayOptionsModal({
       >
         {/* 헤더 */}
         <div className="flex justify-between items-center mb-6">
-          <h3 className="text-[18px] font-bold text-[#0C1A58]">
+          <h3
+            className="font-bold"
+            style={{ fontSize: "var(--text-xl)", color: "var(--color-primary)" }}
+          >
             디스플레이 옵션
           </h3>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 text-[24px]"
+            className="text-gray-500 hover:text-gray-700"
+            style={{ fontSize: "var(--text-3xl)" }}
           >
             ×
           </button>
@@ -145,7 +150,10 @@ export default function DisplayOptionsModal({
           {/* 댄서 필터 (Studio 컨텍스트만) */}
           {entityType === "studio" && availableDancers.length > 0 && (
             <div>
-              <h4 className="text-[14px] font-semibold text-gray-900 mb-3">
+              <h4
+                className="font-semibold text-gray-900 mb-3"
+                style={{ fontSize: "var(--text-base)" }}
+              >
                 댄서 (필수)
               </h4>
               <div className="flex flex-col gap-2">
@@ -160,7 +168,10 @@ export default function DisplayOptionsModal({
                       onChange={() => toggleDancer(dancer.dancer_id)}
                       className="w-4 h-4"
                     />
-                    <span className="text-[14px] text-gray-700">
+                    <span
+                      className="text-gray-700"
+                      style={{ fontSize: "var(--text-base)" }}
+                    >
                       {dancer.main_name}
                     </span>
                   </label>
@@ -171,7 +182,10 @@ export default function DisplayOptionsModal({
 
           {/* 시간대 필터 */}
           <div>
-            <h4 className="text-[14px] font-semibold text-gray-900 mb-3">
+            <h4
+              className="font-semibold text-gray-900 mb-3"
+              style={{ fontSize: "var(--text-base)" }}
+            >
               시간대 (필수)
             </h4>
             <div className="flex flex-wrap gap-2">
@@ -180,12 +194,18 @@ export default function DisplayOptionsModal({
                   key={option.value}
                   onClick={() => toggleTimeSlot(option.value)}
                   className={cn(
-                    "px-3 py-1.5 text-[12px] font-medium rounded-lg",
+                    "px-3 py-1.5 font-medium rounded-lg",
                     "transition-colors",
                     tempFilters.timeSlots.includes(option.value)
-                      ? "bg-[#0C1A58] text-white"
+                      ? "text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   )}
+                  style={{
+                    fontSize: "var(--text-md)",
+                    backgroundColor: tempFilters.timeSlots.includes(option.value)
+                      ? "var(--color-primary)"
+                      : undefined,
+                  }}
                 >
                   {option.label}
                 </button>
@@ -195,7 +215,10 @@ export default function DisplayOptionsModal({
 
           {/* 장르 필터 */}
           <div>
-            <h4 className="text-[14px] font-semibold text-gray-900 mb-3">
+            <h4
+              className="font-semibold text-gray-900 mb-3"
+              style={{ fontSize: "var(--text-base)" }}
+            >
               장르 (선택)
             </h4>
             <div className="flex flex-wrap gap-2">
@@ -204,12 +227,18 @@ export default function DisplayOptionsModal({
                   key={genre}
                   onClick={() => toggleGenre(genre)}
                   className={cn(
-                    "px-3 py-1.5 text-[12px] font-medium rounded-lg",
+                    "px-3 py-1.5 font-medium rounded-lg",
                     "transition-colors",
                     tempFilters.genres.includes(genre)
-                      ? "bg-[#0C1A58] text-white"
+                      ? "text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   )}
+                  style={{
+                    fontSize: "var(--text-md)",
+                    backgroundColor: tempFilters.genres.includes(genre)
+                      ? "var(--color-primary)"
+                      : undefined,
+                  }}
                 >
                   {GENRE_LABELS[genre]}
                 </button>
@@ -219,7 +248,10 @@ export default function DisplayOptionsModal({
 
           {/* 레벨 필터 */}
           <div>
-            <h4 className="text-[14px] font-semibold text-gray-900 mb-3">
+            <h4
+              className="font-semibold text-gray-900 mb-3"
+              style={{ fontSize: "var(--text-base)" }}
+            >
               레벨 (선택)
             </h4>
             <div className="flex gap-2">
@@ -228,12 +260,18 @@ export default function DisplayOptionsModal({
                   key={level}
                   onClick={() => toggleLevel(level)}
                   className={cn(
-                    "flex-1 px-4 py-2 text-[14px] font-medium rounded-lg",
+                    "flex-1 px-4 py-2 font-medium rounded-lg",
                     "transition-colors",
                     tempFilters.levels.includes(level)
-                      ? "bg-[#0C1A58] text-white"
+                      ? "text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   )}
+                  style={{
+                    fontSize: "var(--text-base)",
+                    backgroundColor: tempFilters.levels.includes(level)
+                      ? "var(--color-primary)"
+                      : undefined,
+                  }}
                 >
                   {LEVEL_LABELS[level]}
                 </button>
@@ -247,20 +285,25 @@ export default function DisplayOptionsModal({
           <button
             onClick={handleReset}
             className={cn(
-              "flex-1 px-4 py-2 text-[14px] font-medium",
+              "flex-1 px-4 py-2 font-medium",
               "bg-gray-200 text-gray-700 rounded-lg",
               "hover:bg-gray-300 transition-colors"
             )}
+            style={{ fontSize: "var(--text-base)" }}
           >
             초기화
           </button>
           <button
             onClick={handleApply}
             className={cn(
-              "flex-1 px-4 py-2 text-[14px] font-medium",
-              "bg-[#0C1A58] text-white rounded-lg",
-              "hover:bg-opacity-90 transition-colors"
+              "flex-1 px-4 py-2 font-medium",
+              "text-white rounded-lg",
+              "hover:opacity-90 transition-opacity"
             )}
+            style={{
+              fontSize: "var(--text-base)",
+              backgroundColor: "var(--color-primary)",
+            }}
           >
             적용
           </button>

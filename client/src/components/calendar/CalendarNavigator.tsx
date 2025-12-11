@@ -56,8 +56,18 @@ export default function CalendarNavigator({
 
       {/* 중앙: 년도/월 표시 */}
       <div className="flex flex-col items-center">
-        <span className="text-[14px] font-medium text-gray-600">{year}</span>
-        <span className="text-[18px] font-bold text-[#0C1A58]">{month}</span>
+        <span
+          className="font-medium text-gray-600"
+          style={{ fontSize: "var(--text-base)" }}
+        >
+          {year}
+        </span>
+        <span
+          className="font-bold"
+          style={{ fontSize: "var(--text-xl)", color: "var(--color-primary)" }}
+        >
+          {month}
+        </span>
       </div>
 
       {/* 우측: 다음 달 버튼 + 옵션 버튼 */}
@@ -76,10 +86,19 @@ export default function CalendarNavigator({
         <button
           onClick={onOpenFilters}
           className={cn(
-            "px-3 py-1.5 text-[12px] font-medium",
-            "bg-[#EEF3FF] text-[#0C1A58]",
-            "rounded-lg hover:bg-[#E6E6FA] transition-colors"
+            "px-3 py-1.5 font-medium rounded-lg transition-colors"
           )}
+          style={{
+            fontSize: "var(--text-md)",
+            backgroundColor: "var(--color-primary-bg)",
+            color: "var(--color-primary)",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "var(--color-lavender)")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "var(--color-primary-bg)")
+          }
           aria-label="필터 옵션"
         >
           옵션

@@ -24,7 +24,9 @@ export default function RecentSearches({
   if (!hasRecentSearches) {
     return (
       <div className={cn("text-center py-20", className)}>
-        <p className="text-gray-400 text-[12px]">최근 검색어가 없습니다</p>
+        <p className="text-gray-400" style={{ fontSize: "var(--text-md)" }}>
+          최근 검색어가 없습니다
+        </p>
       </div>
     );
   }
@@ -37,7 +39,8 @@ export default function RecentSearches({
       {/* 클릭 가능한 검색어 영역 */}
       <button
         onClick={() => onSearchItemClick(item)}
-        className="flex-1 text-left text-[12px] text-gray-700 flex items-center"
+        className="flex-1 text-left text-gray-700 flex items-center"
+        style={{ fontSize: "var(--text-md)" }}
         aria-label={`최근 검색어: ${item.name}`}
       >
         {/* 이름 (기본 스타일) */}
@@ -47,13 +50,19 @@ export default function RecentSearches({
         <span className="mx-1.5 text-gray-300">|</span>
 
         {/* 타입 (회색, 작은 글씨, 기울임체) */}
-        <span className="text-gray-400 text-[10px] italic">{item.type}</span>
+        <span
+          className="text-gray-400 italic"
+          style={{ fontSize: "var(--text-sm)" }}
+        >
+          {item.type}
+        </span>
       </button>
 
       {/* 삭제 버튼 */}
       <button
         onClick={() => removeRecentSearch(item.id, item.type)}
-        className="ml-2 text-gray-400 hover:text-gray-600 text-[16px]"
+        className="ml-2 text-gray-400 hover:text-gray-600"
+        style={{ fontSize: "var(--text-lg)" }}
         aria-label={`${item.name} 삭제`}
       >
         ×
@@ -63,7 +72,12 @@ export default function RecentSearches({
 
   return (
     <div className={cn("space-y-6", className)}>
-      <h3 className="text-[14px] font-semibold mb-4 px-2">최근 검색어</h3>
+      <h3
+        className="font-semibold mb-4 px-2"
+        style={{ fontSize: "var(--text-base)" }}
+      >
+        최근 검색어
+      </h3>
       <div>
         <div className="space-y-1 px-2">
           {recentStudios.map(renderSearchItem)}

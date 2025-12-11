@@ -51,7 +51,7 @@ export default function MainPage() {
   };
 
   return (
-    <div className="relative min-h-screen px-8 pb-20">
+    <div className="relative min-h-screen px-4 pb-40">
       {/* Logo */}
       <div style={{ marginTop: "100px" }}>
         <Logo />

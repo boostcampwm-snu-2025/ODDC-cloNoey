@@ -32,12 +32,17 @@ export default function StudioCard({
       {studio.nearby_station && (
         <div className="flex items-center justify-end">
           <img src={locationIcon} alt="위치" className="w-2 h-2" />
-          <p className="text-[8px] text-gray-600">{studio.nearby_station}</p>
+          <p className="text-gray-600" style={{ fontSize: "var(--text-sm)" }}>
+            {studio.nearby_station}
+          </p>
         </div>
       )}
 
       {/* 스튜디오 이름 - 가운데(아래쪽), 왼쪽 정렬, 18px */}
-      <h3 className="font-semibold text-[18px] text-left tracking-[-0.05em] whitespace-nowrap">
+      <h3
+        className="font-semibold text-left tracking-[-0.05em] whitespace-nowrap"
+        style={{ fontSize: "var(--text-xl)" }}
+      >
         {studio.name}
       </h3>
     </div>

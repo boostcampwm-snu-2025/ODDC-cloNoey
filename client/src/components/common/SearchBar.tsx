@@ -23,14 +23,18 @@ export default function SearchBar({ className }: SearchBarProps) {
       onClick={handleClick}
       className={cn(
         "w-[320px] h-[40px] rounded-[20px]",
-        "bg-[#E6E6FA] flex items-center justify-center",
+        "flex items-center justify-center",
         "relative cursor-pointer",
         className
       )}
+      style={{ backgroundColor: "var(--color-lavender)" }}
       aria-label="검색 페이지로 이동"
     >
       {/* 중앙 텍스트 */}
-      <span className="text-[12px] text-[#0C1A58] absolute left-1/2 transform -translate-x-1/2">
+      <span
+        className="absolute left-1/2 transform -translate-x-1/2"
+        style={{ fontSize: "var(--text-md)", color: "var(--color-primary)" }}
+      >
         어떤 클래스를 찾고 있나요?
       </span>
 
