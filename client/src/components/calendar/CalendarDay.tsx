@@ -26,34 +26,43 @@ function DateNumber({
   isCurrentMonth,
 }: DateNumberProps) {
   return (
-    <div
-      className={cn(
-        "flex items-center justify-center",
-        "w-6 h-6 rounded",
-        isToday || isSelected ? "font-bold" : "font-medium",
-        !isToday &&
-          !isSelected &&
-          (isCurrentMonth ? "text-gray-900" : "text-gray-400")
+    <div className="relative w-6 h-6 flex items-center justify-center">
+      {/* 선택 테두리 (바깥 레이어) */}
+      {isSelected && (
+        <div
+          className="absolute inset-0 rounded"
+          style={{ border: "1px solid var(--color-primary)" }}
+        />
       )}
-      style={{
-        fontSize: "var(--text-base)",
-        fontFamily: "var(--font-calendar-number)",
-        letterSpacing: "var(--letter-spacing-calendar)",
-        backgroundColor: isToday
-          ? "var(--color-primary)"
-          : isSelected
-            ? "var(--color-white)"
-            : undefined,
-        color: isToday
-          ? "var(--color-white)"
-          : isSelected
+
+      {/* 날짜 박스 (안쪽 레이어) */}
+      <div
+        className={cn(
+          "flex items-center justify-center rounded",
+          isToday ? "w-[20px] h-[20px]" : "w-6 h-6",
+          isToday || isSelected ? "font-bold" : "font-medium",
+          !isToday &&
+            !isSelected &&
+            (isCurrentMonth ? "text-gray-900" : "text-gray-400")
+        )}
+        style={{
+          fontSize: "var(--text-base)",
+          fontFamily: "var(--font-calendar-number)",
+          letterSpacing: "var(--letter-spacing-calendar)",
+          backgroundColor: isToday
             ? "var(--color-primary)"
-            : undefined,
-        border:
-          isSelected && !isToday ? "1px solid var(--color-primary)" : undefined,
-      }}
-    >
-      {date}
+            : isSelected
+              ? "var(--color-white)"
+              : undefined,
+          color: isToday
+            ? "var(--color-white)"
+            : isSelected
+              ? "var(--color-primary)"
+              : undefined,
+        }}
+      >
+        {date}
+      </div>
     </div>
   );
 }

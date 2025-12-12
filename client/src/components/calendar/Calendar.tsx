@@ -113,6 +113,22 @@ export default function Calendar<T extends Studio | Dancer>({
     });
   };
 
+  const handleTodayClick = () => {
+    const today = new Date();
+    const currentYear = currentMonth.getFullYear();
+    const currentMonthIndex = currentMonth.getMonth();
+    const todayYear = today.getFullYear();
+    const todayMonth = today.getMonth();
+
+    const monthDiff = (todayYear - currentYear) * 12 + (todayMonth - currentMonthIndex);
+
+    if (monthDiff !== 0) {
+      handleMonthChange(monthDiff);
+    }
+
+    setSelectedDate(today);
+  };
+
   const handleDateClick = (date: Date, dayClasses: ClassSchedule[]) => {
     setSelectedDate(date);
     onDateClick?.(date, dayClasses);
@@ -134,6 +150,7 @@ export default function Calendar<T extends Studio | Dancer>({
       <CalendarNavigator
         currentDate={currentMonth}
         onMonthChange={handleMonthChange}
+        onTodayClick={handleTodayClick}
         onOpenFilters={handleOpenFilters}
       />
 

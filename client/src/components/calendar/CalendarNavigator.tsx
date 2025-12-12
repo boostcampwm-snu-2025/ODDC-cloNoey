@@ -6,6 +6,7 @@ import verticalDots from "@/assets/icons/vertical_dots.svg";
 interface CalendarNavigatorProps {
   currentDate: Date;
   onMonthChange: (delta: number) => void;
+  onTodayClick?: () => void;
   onOpenFilters: () => void;
   className?: string;
 }
@@ -17,6 +18,7 @@ interface CalendarNavigatorProps {
 export default function CalendarNavigator({
   currentDate,
   onMonthChange,
+  onTodayClick,
   onOpenFilters,
   className,
 }: CalendarNavigatorProps) {
@@ -25,18 +27,22 @@ export default function CalendarNavigator({
 
   // Today 버튼 클릭 핸들러
   const handleTodayClick = () => {
-    const today = new Date();
-    const currentYear = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth();
-    const todayYear = today.getFullYear();
-    const todayMonth = today.getMonth();
+    if (onTodayClick) {
+      onTodayClick();
+    } else {
+      // fallback: 기존 동작
+      const today = new Date();
+      const currentYear = currentDate.getFullYear();
+      const currentMonth = currentDate.getMonth();
+      const todayYear = today.getFullYear();
+      const todayMonth = today.getMonth();
 
-    // 현재 날짜와 오늘 날짜의 월 차이 계산
-    const monthDiff =
-      (todayYear - currentYear) * 12 + (todayMonth - currentMonth);
+      const monthDiff =
+        (todayYear - currentYear) * 12 + (todayMonth - currentMonth);
 
-    if (monthDiff !== 0) {
-      onMonthChange(monthDiff);
+      if (monthDiff !== 0) {
+        onMonthChange(monthDiff);
+      }
     }
   };
 
