@@ -35,11 +35,11 @@ export default function ContentToggle({
         className={cn(
           "relative shrink-0",
           "w-[80px] h-[26px] rounded-[20px]",
-          "bg-[#D9D9D9]",
           "transition-all",
           "flex items-center justify-between px-2"
         )}
         style={{
+          backgroundColor: "var(--color-light-gray)",
           boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25) inset",
         }}
         aria-label={viewMode === "card" ? "카드형 보기" : "지도형 보기"}
@@ -69,14 +69,15 @@ export default function ContentToggle({
           className={cn(
             "absolute top-1/2 -translate-y-1/2",
             "w-[45px] h-[22px] rounded-[20px]",
-            "border border-[#9E9E9E]",
-            "bg-[#EEF3FF]",
+            "border",
             "transition-all duration-200 ease-in-out",
             "flex items-center justify-center",
             // 왼쪽(카드형): left-[2px], 오른쪽(지도형): left-[33px]
             viewMode === "card" ? "left-[2px]" : "left-[33px]"
           )}
           style={{
+            borderColor: "var(--color-medium-gray)",
+            backgroundColor: "var(--color-primary-bg)",
             boxShadow: "0 1px 5px 0 rgba(0, 0, 0, 0.25)",
           }}
         >

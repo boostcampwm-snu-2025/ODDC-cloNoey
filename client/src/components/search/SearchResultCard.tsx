@@ -41,13 +41,19 @@ export default function SearchResultCard({
     >
       {/* 좌측: 이름 + Role */}
       <div className="flex flex-col gap-1">
-        <h3 className="flex text-[14px] font-semibold text-gray-900 items-center">
+        <h3
+          className="flex font-semibold text-gray-900 items-center"
+          style={{ fontSize: "var(--text-base)" }}
+        >
           <span>{item.name}</span>
           {/* 구분선 (연한 회색) */}
           <span className="mx-1.5 text-gray-300">|</span>
 
           {/* 타입 (회색, 작은 글씨, 기울임체) */}
-          <span className="text-gray-400 text-[10px] italic">
+          <span
+            className="text-gray-400 italic"
+            style={{ fontSize: "var(--text-sm)" }}
+          >
             @{item.instagram}
           </span>
         </h3>
@@ -55,7 +61,8 @@ export default function SearchResultCard({
 
       {/* 우측: > 버튼 */}
       <button
-        className="text-gray-400 text-[20px] font-light"
+        className="text-gray-400 font-light"
+        style={{ fontSize: "var(--text-2xl)" }}
         aria-label={`${item.name} 상세보기`}
       >
         <img

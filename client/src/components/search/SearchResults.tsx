@@ -54,7 +54,9 @@ export default function SearchResults({
   if (!hasResults) {
     return (
       <div className={cn("text-center py-20", className)}>
-        <p className="text-gray-400 text-[14px]">검색 결과가 없습니다</p>
+        <p className="text-gray-400" style={{ fontSize: "var(--text-base)" }}>
+          검색 결과가 없습니다
+        </p>
       </div>
     );
   }
@@ -64,7 +66,10 @@ export default function SearchResults({
       {/* 스튜디오 결과 */}
       {studios.length > 0 && (
         <div>
-          <h3 className="text-[14px] font-semibold mb-2 mx-2 p-2 text-gray-600 border-b border-gray-300">
+          <h3
+            className="font-semibold mb-2 mx-2 p-2 text-gray-600 border-b border-gray-300"
+            style={{ fontSize: "var(--text-base)" }}
+          >
             Studio ({studios.length})
           </h3>
           <div>
@@ -82,7 +87,10 @@ export default function SearchResults({
       {/* 댄서 결과 */}
       {dancers.length > 0 && (
         <div>
-          <h3 className="text-[14px] font-semibold mb-2 mx-2 p-2 text-gray-600 border-b border-gray-300">
+          <h3
+            className="font-semibold mb-2 mx-2 p-2 text-gray-600 border-b border-gray-300"
+            style={{ fontSize: "var(--text-base)" }}
+          >
             Dancer ({dancers.length}
             {hasMoreDancers ? "+" : ""})
           </h3>
