@@ -31,3 +31,16 @@ server/database/alembic/versions/
 
 # DB
 *.sql
+
+# Frontend/Node.js
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Additional editor files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
