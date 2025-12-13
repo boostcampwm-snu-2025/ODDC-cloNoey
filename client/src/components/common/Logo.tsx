@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import logoODDC from "@/assets/icons/logo_ODDC.svg";
 
 interface LogoProps {
@@ -12,7 +11,7 @@ interface LogoProps {
 export default function Logo({ className }: LogoProps) {
   return (
     <div className="flex justify-center items-center">
-      <img src={logoODDC} alt="ODDC Logo" className={cn("h-8", className)} />
+      <img src={logoODDC} alt="ODDC Logo" className={className || "h-8"} />
     </div>
   );
 }
