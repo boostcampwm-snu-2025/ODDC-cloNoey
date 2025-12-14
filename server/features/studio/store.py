@@ -172,6 +172,6 @@ class StudioStore:
             else:
                 studio = studio_in_session
 
-            await SESSION.delete(studio)
+            SESSION.delete(studio)
         except Exception as e:
             raise studio_delete_error(e)

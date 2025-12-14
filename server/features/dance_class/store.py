@@ -150,6 +150,6 @@ class ClassStore:
             else:
                 class_obj = class_in_session
 
-            await SESSION.delete(class_obj)
+            SESSION.delete(class_obj)
         except Exception as e:
             raise class_delete_error(e)
