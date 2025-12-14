@@ -120,7 +120,7 @@ class DancerStore:
             else:
                 dancer = dancer_in_session
 
-            await SESSION.delete(dancer)
+            SESSION.delete(dancer)
         except Exception as e:
             raise dancer_delete_error(e)
 
@@ -230,17 +230,5 @@ class DancerStore:
                     "instagram": dancer_data.get("instagram", ""),
                     "error": str(e)
                 })
-
-        try:
-            await SESSION.commit()
-        except Exception as e:
-            await SESSION.rollback()
-            errors.append({
-                "row": 0,
-                "name": "",
-                "instagram": "",
-                "error": f"Database commit failed: {str(e)}"
-            })
-            return 0, errors
 
         return success_count, errors
