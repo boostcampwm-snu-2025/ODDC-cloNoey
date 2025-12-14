@@ -17,6 +17,7 @@ export default function MapPin({ studio, onClick, className }: MapPinProps) {
   };
 
   if (!studio.coordinates) {
+    console.log(`[MapPin] ${studio.name}: coordinates 없음`);
     return null;
   }
 
@@ -26,20 +27,22 @@ export default function MapPin({ studio, onClick, className }: MapPinProps) {
     top: `${studio.coordinates.y}%`,
   };
 
+  console.log(`[MapPin 렌더링] ${studio.name} - x: ${studio.coordinates.x.toFixed(1)}%, y: ${studio.coordinates.y.toFixed(1)}%`);
+
   return (
     <div
       onClick={handleClick}
       style={style}
       className={cn(
         "absolute transform -translate-x-1/2 -translate-y-full",
-        "cursor-pointer group",
+        "cursor-pointer group z-10",
         className
       )}
     >
       {/* 핀 이미지 */}
       <div className="relative">
         {/* 핀 아이콘 - 추후 실제 핀 이미지로 교체 */}
-        <div className="w-6 h-6 ">📍</div>
+        <div className="w-8 h-8 text-2xl bg-red-500 rounded-full flex items-center justify-center">📍</div>
 
         {/* 스튜디오 이름 카드 */}
         <div
