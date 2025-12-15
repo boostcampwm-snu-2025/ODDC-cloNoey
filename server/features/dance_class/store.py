@@ -151,5 +151,7 @@ class ClassStore:
 
             SESSION.delete(class_obj)
             await SESSION.flush()  # Ensure deletion is processed
+            await SESSION.commit()  # Explicitly commit the transaction
         except Exception as e:
+            await SESSION.rollback()
             raise class_delete_error(e)

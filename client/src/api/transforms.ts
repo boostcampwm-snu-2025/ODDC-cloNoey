@@ -19,6 +19,11 @@ export function transformClassResponse(backendClass: any): ClassSchedule {
       main_name: d.main_name,
       instagram: d.instagram,
     })),
+    studio: backendClass.studio ? {
+      studio_id: backendClass.studio.studio_id,
+      name: backendClass.studio.name,
+      instagram: backendClass.studio.instagram,
+    } : undefined,
   };
 }
 

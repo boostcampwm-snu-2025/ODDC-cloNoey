@@ -37,6 +37,7 @@ class StudioInfo(BaseModel):
     """수업의 스튜디오 정보"""
     studio_id: str
     name: str
+    instagram: Optional[str] = None
 
 
 class ClassDetailResponse(BaseModel):
@@ -55,7 +56,8 @@ class ClassDetailResponse(BaseModel):
             class_id=class_obj.class_id,
             studio=StudioInfo(
                 studio_id=class_obj.studio.studio_id,
-                name=class_obj.studio.name
+                name=class_obj.studio.name,
+                instagram=class_obj.studio.instagram
             ),
             dancers=[
                 DancerInfo(

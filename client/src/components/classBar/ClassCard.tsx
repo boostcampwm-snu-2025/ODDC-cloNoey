@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import type { ClassSchedule } from "@/types";
 import { GENRE_LABELS, LEVEL_LABELS } from "@/types";
-import { mockStudios } from "@/data";
 import InstagramIcon from "@/assets/icons/instagram.svg";
 import CalendarIcon from "@/assets/icons/calendar.svg";
 
@@ -21,13 +20,7 @@ export default function ClassCard({
   className,
   entityType,
 }: ClassCardProps) {
-  const { start_time, dancers, genre, level, studio_id } = classSchedule;
-
-  // 댄서 페이지일 때 스튜디오 정보 가져오기
-  const studio =
-    entityType === "dancer"
-      ? mockStudios.find((s) => s.studio_id === studio_id)
-      : null;
+  const { start_time, dancers, genre, level, studio } = classSchedule;
 
   return (
     <div
