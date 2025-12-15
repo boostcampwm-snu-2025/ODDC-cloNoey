@@ -9,7 +9,6 @@ from server.features.dance_class.dto.requests import (
 )
 from server.features.dance_class.dto.responses import ClassResponse
 from server.features.dance_class.store import ClassStore
-from server.database.annotation import transactional
 
 class ClassService:
     def __init__(self, class_db_store: Annotated[ClassStore, Depends()]):
@@ -50,7 +49,6 @@ class ClassService:
         )
         return ClassResponse.from_class(updated_class)
 
-    @transactional
     async def delete_class(self, class_request: ClassDeleteRequest) -> None:
         """수업 삭제"""
         # 먼저 수업을 조회

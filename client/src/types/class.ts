@@ -43,6 +43,15 @@ export interface ClassDancer {
 }
 
 /**
+ * 스튜디오 정보 (클래스 장소)
+ */
+export interface ClassStudio {
+  studio_id: string;
+  name: string;
+  instagram?: string;
+}
+
+/**
  * 클래스 일정 (백엔드 Class 모델과 일치)
  * server/features/dance_class/models.py Class 모델 참고
  */
@@ -58,6 +67,9 @@ export interface ClassSchedule {
 
   // Many-to-many relationship
   dancers: ClassDancer[]; // 해당 클래스를 가르치는 댄서들
+
+  // 스튜디오 정보 (댄서 페이지에서 사용)
+  studio?: ClassStudio; // 선택적 - 댄서별 수업 조회 시에만 포함
 }
 
 /**
